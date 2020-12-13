@@ -45,7 +45,8 @@ python run_hed.py
 
 This will save .mat files in a mat_output directory, and HED edge photos (first level of sketch) in a hed_output directory.
 
-If you wish to obtain simpler sketch images, change directories to /matlab_process, and run Postprocessing.m
+If you wish to obtain simpler sketch images, change directories to /matlab_process, and run Postprocessing.m.
+
 For instructions on Postprocessing.m requirements consult https://github.com/phillipi/pix2pix/blob/master/scripts/edges/PostprocessHED.m. Piotr's image toolbox must be installed. To see how to work this in colab consult guide.ipynb
 
 A snippet looks like:
