@@ -5,7 +5,7 @@ This is based off StyleGAN, taking some ideas from SketchyGAN.
 
 ### Quick explanation:
   
-  1. generate_images creates a paired face image and style vectors dataset
+  1. generate_images creates a paired face image and style vector dataset
   2. filter_images will filter the background out of the face images
   3. run_hed will create matlab files for postprocessing and save HED images, creating the first level of sketch
   4. matlab_process/Postrocess.m will then create simpler sketches from the HED, one can generate as many levels of sketch as they want
