@@ -156,7 +156,7 @@ class evalDataset(Dataset):
 
 
 
-class asdf(nn.Module):
+class BasicConvnet(nn.Module):
     
     
     def __init__(self):
@@ -195,10 +195,10 @@ class FaceSketchModel(nn.Module):
         self.frozen = frozen
         if vgg_load:
 #             model = models.mobilenet_v2(pretrained = True)
-            model = asdf()
-            self.vgg16 = model
+            model = BasicConvnet()
+            self.BC = model
         else:
-            self.vgg16 = models.mobilenet_v2(pretrained = False)
+            self.BC = models.mobilenet_v2(pretrained = False)
         if frozen:
             for param in self.vgg16.parameters():
                 param.requires_grad = False
@@ -211,14 +211,14 @@ class FaceSketchModel(nn.Module):
 
     def forward(self, x):
         if self.frozen:
-            x = self.vgg16(x)
+            x = self.BC(x)
             x = self.last_layer(x)
             return x
         else:
             # x = self.first_layer(x)
             # x = self.relu(x)
             # x - self.tform(x)
-            x = self.vgg16(x)
+            x = self.BC(x)
             x = self.last_layer(self.relu(x))
             return x
 
