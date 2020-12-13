@@ -1,2 +1,4 @@
 # sketchyFace
-a method for generating realistic faces from simple sketches
+### a method for creating realistic faces from simple sketches
+
+This is based off
