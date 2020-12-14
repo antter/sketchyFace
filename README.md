@@ -7,11 +7,11 @@ The overall idea is that we can use StyleGAN to create paired images and style v
 
 The model is outlined below. As our ConvNet we use a very basic archtiecture with 3 Conv layers and 2 FC. This can be changed in main_model.py.
 
-![Methodology](https://github.com/antter/sketchyFace/method.png)
+![Methodology](https://github.com/antter/sketchyFace/blob/main/method.png)
 
 Our baseline method's results are presented below. This baseline does only minimal preprocessing and thus is unsuitable for actual rough sketches, they would have to look as detailed as in the examples. Results other than the baseline will come soon.
 
-![Results](https://github.com/antter/sketchyFace/results.png)
+![Results](https://github.com/antter/sketchyFace/blob/main/results.png)
 
 
 
