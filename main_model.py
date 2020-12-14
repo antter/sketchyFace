@@ -151,7 +151,7 @@ class evalDataset(Dataset):
         arr_loc = os.path.splitext(img_loc)[0] + '.npy'
         sketch_fp = os.path.join(self.sketch_dir, img_loc)
         img = PIL.Image.open(sketch_fp).convert('L')
-        return transform(np.array(img.resize(256, 256))), arr_loc
+        return transform(np.array(img.resize((256, 256))), arr_loc
 
 ###########################################################################
 
