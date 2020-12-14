@@ -161,7 +161,7 @@ class BasicConvnet(nn.Module):
     
     
     def __init__(self):
-        super(asdf, self).__init__()
+        super(BasicConvnet, self).__init__()
         self.conv1 = nn.Conv2d(1, 16, 7, 4)
         # 64
         self.conv2 = nn.Conv2d(16, 64, 5, 2)
