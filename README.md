@@ -11,7 +11,7 @@ The model is outlined below. As our ConvNet we use a very basic archtiecture wit
 
 Our baseline method's results are presented below. This baseline does only minimal preprocessing and thus is unsuitable for actual rough sketches, they would have to look as detailed as in the examples. Results other than the baseline will come soon.
 
-![Results](https://github.com/antter/sketchyFace/blob/main/results.png)
+![Results](https://github.com/antter/sketchyFace/blob/main/result.png)
 
 
 
