@@ -82,13 +82,13 @@ Once a model has been trained, latent vectors can be predicted from photos in th
 ```
 python main_model.py --ckpt CKPT  --blur --eval
 ```
-It is important that if you put --blur if and only if your model was trained that way.
+Your predicted latent vectors will be stored in /eval_latent. It is important that if you put --blur if and only if your model was trained that way.
 
 Then, run
 ```
 python generate_images.py --eval
 ```
-And your latent vectors will be turned into their corresponding StyleGAN faces.
+And your latent vectors will be turned into their corresponding StyleGAN faces. The will be stored in /eval_photos.
 That's all!
 
 ### References
