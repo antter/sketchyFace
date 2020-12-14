@@ -107,7 +107,8 @@ class trainSketchSampler(Sampler):
         idx = choice(self.num_levels, p = prob)
         self.product[idx] = self.product[idx] - self.weight_vector[idx]
         self.sum_ = self.sum_ - self.weight_vector[idx]
-        ret2 = choice(self.samples[idx])
+        idx2 = choice(len(self.samples[idx]))
+        ret2 = self.samples[idx].pop(idx2)
         ret1 = self.sketch_levels[idx]
         self.num_samples[idx] -= 1
         yield ret1, ret2
@@ -150,13 +151,13 @@ class evalDataset(Dataset):
         arr_loc = os.path.splitext(img_loc)[0] + '.npy'
         sketch_fp = os.path.join(self.sketch_dir, img_loc)
         img = PIL.Image.open(sketch_fp).convert('L')
-        return transform(np.array(img)), arr_loc
+        return transform(np.array(img.resize(256, 256))), arr_loc
 
 ###########################################################################
 
 
 
-class BasicConvnet(nn.Module):
+class asdf(nn.Module):
     
     
     def __init__(self):
@@ -195,10 +196,10 @@ class FaceSketchModel(nn.Module):
         self.frozen = frozen
         if vgg_load:
 #             model = models.mobilenet_v2(pretrained = True)
-            model = BasicConvnet()
-            self.BC = model
+            model = asdf()
+            self.vgg16 = model
         else:
-            self.BC = models.mobilenet_v2(pretrained = False)
+            self.vgg16 = models.mobilenet_v2(pretrained = False)
         if frozen:
             for param in self.vgg16.parameters():
                 param.requires_grad = False
@@ -211,14 +212,14 @@ class FaceSketchModel(nn.Module):
 
     def forward(self, x):
         if self.frozen:
-            x = self.BC(x)
+            x = self.vgg16(x)
             x = self.last_layer(x)
             return x
         else:
             # x = self.first_layer(x)
             # x = self.relu(x)
             # x - self.tform(x)
-            x = self.BC(x)
+            x = self.vgg16(x)
             x = self.last_layer(self.relu(x))
             return x
 
