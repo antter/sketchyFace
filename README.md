@@ -82,6 +82,9 @@ That's all!
 ### References
 
 https://github.com/phillipi/pix2pix/blob/master/scripts/edges/
+
 https://git.droidware.info/wchen342/SketchyGAN
+
 https://github.com/zllrunning/face-parsing.PyTorch
+
 https://github.com/sniklaus/pytorch-hed/blob/master/run.py
