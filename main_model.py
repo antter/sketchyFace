@@ -157,7 +157,7 @@ class evalDataset(Dataset):
 
 
 
-class asdf(nn.Module):
+class BasicConvnet(nn.Module):
     
     
     def __init__(self):
@@ -187,21 +187,17 @@ class asdf(nn.Module):
     
 class FaceSketchModel(nn.Module):
 
-    def __init__(self, vgg_load = True, frozen = False):
+    def __init__(self, frozen = False):
         """
         vgg_load: specify if you want to load pretrained vgg or if you plan on loading this model from a state_dict
         frozen: specify is vgg weights will be frozen
         """
         super(FaceSketchModel, self).__init__()
         self.frozen = frozen
-        if vgg_load:
-#             model = models.mobilenet_v2(pretrained = True)
-            model = asdf()
-            self.vgg16 = model
-        else:
-            self.vgg16 = models.mobilenet_v2(pretrained = False)
+        model = BasicConvnet()
+        self.BC = model
         if frozen:
-            for param in self.vgg16.parameters():
+            for param in self.BC.parameters():
                 param.requires_grad = False
         self.last_layer = torch.nn.Linear(1028, 512)
         if not frozen:
@@ -212,14 +208,14 @@ class FaceSketchModel(nn.Module):
 
     def forward(self, x):
         if self.frozen:
-            x = self.vgg16(x)
+            x = self.BC(x)
             x = self.last_layer(x)
             return x
         else:
             # x = self.first_layer(x)
             # x = self.relu(x)
             # x - self.tform(x)
-            x = self.vgg16(x)
+            x = self.BC(x)
             x = self.last_layer(self.relu(x))
             return x
 
